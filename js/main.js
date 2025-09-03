@@ -1,60 +1,47 @@
-(function () {
-  'use strict';
+const productList = document.getElementById("product-list");
+const loadMoreBtn = document.getElementById("load-more");
 
-  const fmtBRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
-  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+let nextPage = "https://desafio-api.bold.workers.dev/products?page=1";
 
-  let nextPage = 'https://desafio-api.bold.workers.dev/products?page=1';
-  let loading = false;
+// Função para criar os cards de produtos
+function renderProducts(products) {
+  products.forEach(product => {
+    const card = document.createElement("div");
+    card.classList.add("product-card");
 
-  const listEl = $('#product-list');
-  const loadMoreBtn = $('#load-more');
-  const cardTpl = $('#product-card-template');
+    card.innerHTML = `
+      <img src="https:${product.image}" alt="${product.name}">
+      <h4>${product.name}</h4>
+      <p>${product.description}</p>
+      <p class="price">De: R$${product.oldPrice} <br> Por: R$${product.price}</p>
+      <p>ou ${product.installments.count}x de R$${product.installments.value}</p>
+      <button>Comprar</button>
+    `;
 
-  async function loadProducts() {
-    if (loading || !nextPage) return;
-    loading = true;
-    listEl.setAttribute('aria-busy', 'true');
+    productList.appendChild(card);
+  });
+}
 
-    try {
-      const res = await fetch(nextPage);
-      const data = await res.json();
-
-      renderProducts(data.products);
-
-      nextPage = data.nextPage || '';
-      if (!nextPage) {
-        loadMoreBtn.disabled = true;
-        loadMoreBtn.textContent = 'Todos os produtos carregados';
-      }
-    } catch (err) {
-      console.error('Erro ao carregar produtos:', err);
-    } finally {
-      loading = false;
-      listEl.removeAttribute('aria-busy');
-    }
+// Função para buscar os produtos
+async function fetchProducts() {
+  if (!nextPage) {
+    loadMoreBtn.style.display = "none";
+    return;
   }
 
-  function renderProducts(items) {
-    const frag = document.createDocumentFragment();
+  try {
+    const res = await fetch(nextPage);
+    const data = await res.json();
 
-    items.forEach((p) => {
-      const node = cardTpl.content.cloneNode(true);
-      node.querySelector('img').src = p.image;
-      node.querySelector('img').alt = p.name;
-      node.querySelector('.card__title').textContent = p.name;
-      node.querySelector('.card__desc').textContent = p.description;
-      node.querySelector('.old').textContent = `De: ${fmtBRL.format(p.oldPrice)}`;
-      node.querySelector('.now').textContent = `Por: ${fmtBRL.format(p.price)}`;
-      node.querySelector('.installments').textContent = `ou ${p.installments.count}x de ${fmtBRL.format(p.installments.value)}`;
-
-      frag.appendChild(node);
-    });
-
-    listEl.appendChild(frag);
+    renderProducts(data.products);
+    nextPage = data.nextPage ? `https://${data.nextPage}` : null;
+  } catch (error) {
+    console.error("Erro ao carregar produtos:", error);
   }
+}
 
-  loadMoreBtn.addEventListener('click', loadProducts);
-  loadProducts();
-})();
+// Evento do botão "Carregar mais"
+loadMoreBtn.addEventListener("click", fetchProducts);
 
+// Carregar a primeira página ao iniciar
+fetchProducts();
