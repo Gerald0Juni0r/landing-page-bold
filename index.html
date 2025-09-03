@@ -1,145 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seleção especial — Linx Impulse</title>
-  <meta name="description" content="Landing page com grade de produtos e newsletter." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header class="hero" id="topo">
-    <div class="container hero__inner">
-      <p class="kicker">uma seleção de produtos</p>
-      <h1>especial para você</h1>
-      <p class="subtitle">Todos os produtos desta lista foram selecionados a partir da sua navegação. Aproveite!</p>
+  <!-- Header -->
+  <header>
+    <h1>uma seleção de produtos</h1>
+    <h2>especial para você</h2>
+    <p>Todos os produtos desta lista foram selecionados a partir da sua navegação. Aproveite!</p>
 
-      <nav class="hero__actions" aria-label="atalhos da página">
-        <a class="btn" href="#linx">Conheça a Linx</a>
-        <a class="btn" href="#algoritmo">Ajude o algoritmo</a>
-        <a class="btn" href="#produtos">Seus produtos</a>
-        <a class="btn" href="#newsletter">Compartilhe</a>
-      </nav>
-    </div>
-    <div class="hero__skew" aria-hidden="true"></div>
+    <nav>
+      <button>Conheça a Linx</button>
+      <button>Ajude o algoritmo</button>
+      <button>Seus produtos</button>
+      <button>Compartilhe</button>
+    </nav>
   </header>
 
-  <main id="conteudo" class="container">
-    <!-- Ajude o algoritmo -->
-    <section id="algoritmo" class="section">
-      <header class="section__header">
-        <h2>Ajude o algoritmo a ser mais certeiro</h2>
-        <button class="section__toggle" aria-expanded="true" aria-controls="algoritmo-content">▾</button>
-      </header>
+  <!-- Formulário principal -->
+  <section>
+    <form>
+      <h3>Ajude o algoritmo a ser mais certeiro</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mollis eget ante facilisis quam ullamcorper. Morbi interdum ultrices lorem sed tincidunt. Nunc rhoncus lacinia consectetur. Vestibulum at sodales elit, sed bibendum tellus. Aliquam sed blandit enim, quis ultricies risus. Sed bibendum pharetra enim. Mauris eu pellentesque lorem. Donec at magna enim. Lorem ipsum condimentum rhoncus. Suspendisse quis cursus neque. Ut ex turpis, pharetra vel ante et, commodo tempor nulla. Mauris rhoncus vut elit, aliquam accumsan sem pulvinar in.</p>
+      <p>Phasellus scelerisque augue sit amet diam bibendum egestas. Vestibulum laoreet sed ex ut lacinia. Donec viverra leo vitae est fermentum, non aliquet purus semper. Fusce ultrices erat nunc, eu dignissim quam ultricies id. Cras eu bibendum ante, eget varius risus. Integer id risus porta, bibendum erat vitae, aliquet erat. Aenean a massa sit amet lorem varius venenatis. In tempus pretium nibh, quis mattis elit congue sit amet.</p>
+      
+      <label for="name">Seu nome:</label>
+      <input type="text" id="name" placeholder="Digite seu nome">
 
-      <div id="algoritmo-content" class="section__content">
-        <div class="two-col">
-          <div class="copy">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies tellus nec mi porta
-              convallis sollicitudin eu urna.
-            </p>
-            <p>
-              Morbi eu condimentum urna. Curabitur eu magna eget turpis condimentum ultrices. Suspendisse quis lorem
-              ultricies, pulvinar purus sed, egestas erat.
-            </p>
-          </div>
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" placeholder="Digite seu e-mail">
 
-          <form id="form-user" class="form" novalidate>
-            <label class="field">
-              <span>Seu nome</span>
-              <input name="name" type="text" placeholder="Seu nome" required />
-              <small class="error" aria-live="polite"></small>
-            </label>
+      <label for="cpf">CPF:</label>
+      <input type="text" id="cpf" placeholder="Digite seu CPF">
 
-            <label class="field">
-              <span>E-mail</span>
-              <input name="email" type="email" placeholder="voce@exemplo.com" required />
-              <small class="error" aria-live="polite"></small>
-            </label>
-
-            <label class="field">
-              <span>CPF</span>
-              <input name="cpf" inputmode="numeric" pattern="\d{11}" maxlength="11" placeholder="Somente números" required />
-              <small class="hint">11 dígitos, somente números</small>
-              <small class="error" aria-live="polite"></small>
-            </label>
-
-            <fieldset class="field field--inline">
-              <legend>Gênero</legend>
-              <label><input type="radio" name="gender" value="M" required /> Masculino</label>
-              <label><input type="radio" name="gender" value="F" /> Feminino</label>
-              <small class="error" aria-live="polite"></small>
-            </fieldset>
-
-            <button class="btn btn--primary" type="submit">Enviar</button>
-          </form>
-        </div>
+      <div class="radio-group">
+        <label><input type="radio" name="gender"> Masculino</label>
+        <label><input type="radio" name="gender"> Feminino</label>
       </div>
-    </section>
 
-    <!-- Produtos -->
-    <section id="produtos" class="section">
-      <header class="section__header">
-        <h2>Sua seleção especial</h2>
-      </header>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
 
-      <div id="product-list" class="grid" aria-live="polite" aria-busy="true"></div>
-      <div class="loadmore">
-        <button id="load-more" class="btn btn--ghost" type="button">Ainda mais produtos aqui!</button>
-      </div>
-    </section>
-
-    <!-- Newsletter / Compartilhe -->
-    <section id="newsletter" class="section">
-      <header class="section__header">
-        <h2>Compartilhe a novidade</h2>
-      </header>
-
-      <p class="section__lead">Quer que seus amigos também ganhem a lista personalizada deles? Preencha agora!</p>
-
-      <form id="form-newsletter" class="form form--compact" novalidate>
-        <label class="field">
-          <span>Nome do seu amigo</span>
-          <input name="friendName" type="text" required />
-          <small class="error" aria-live="polite"></small>
-        </label>
-        <label class="field">
-          <span>E-mail dele</span>
-          <input name="friendEmail" type="email" required />
-          <small class="error" aria-live="polite"></small>
-        </label>
-        <button class="btn btn--primary" type="submit">Enviar agora</button>
-      </form>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <p>Testando suas habilidades em HTML, CSS e JS.<br>Linx Impulse<br>2019</p>
+  <!-- Produtos -->
+  <section class="products">
+    <h3>Sua seleção especial</h3>
+    <div id="product-list" class="product-grid">
+      <!-- Produtos carregados via JS -->
     </div>
-    <div class="footer__skew" aria-hidden="true"></div>
+    <button class="load-more" id="load-more">Ainda mais produtos aqui!</button>
+  </section>
+
+  <!-- Compartilhar -->
+  <section>
+    <form>
+      <h3>Compartilhe a novidade</h3>
+      <p>Quer que seus amigos também ganhem a lista personalizada deles? Preencha agora!</p>
+
+      <label for="friend-name">Nome do seu amigo:</label>
+      <input type="text" id="friend-name" placeholder="Digite o nome do seu amigo">
+
+      <label for="friend-email">E-mail:</label>
+      <input type="email" id="friend-email" placeholder="Digite o e-mail do seu amigo">
+
+      <button type="submit">Enviar agora</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Testando suas habilidades em HTML, CSS e JS.</p>
+    <p>Linx Impulse</p>
+    <p>2019</p>
   </footer>
 
-  <template id="product-card-template">
-    <article class="card">
-      <a class="card__image" href="#">
-        <img loading="lazy" alt="" />
-      </a>
-      <div class="card__body">
-        <h3 class="card__title"></h3>
-        <p class="card__desc"></p>
-        <p class="card__price">
-          <span class="old"></span>
-          <strong class="now"></strong>
-          <span class="installments"></span>
-        </p>
-        <button class="btn btn--primary card__cta" type="button">Comprar</button>
-      </div>
-    </article>
-  </template>
-
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
-
