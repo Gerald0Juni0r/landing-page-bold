@@ -1,1 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seleção especial — Linx Impulse</title>
+  <meta name="description" content="Landing page com grade de produtos e newsletter." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="hero" id="topo">
+    <div class="container hero__inner">
+      <p class="kicker">uma seleção de produtos</p>
+      <h1>especial para você</h1>
+      <p class="subtitle">Todos os produtos desta lista foram selecionados a partir da sua navegação. Aproveite!</p>
+
+      <nav class="hero__actions" aria-label="atalhos da página">
+        <a class="btn" href="#linx">Conheça a Linx</a>
+        <a class="btn" href="#algoritmo">Ajude o algoritmo</a>
+        <a class="btn" href="#produtos">Seus produtos</a>
+        <a class="btn" href="#newsletter">Compartilhe</a>
+      </nav>
+    </div>
+    <div class="hero__skew" aria-hidden="true"></div>
+  </header>
+
+  <main id="conteudo" class="container">
+    <!-- Ajude o algoritmo -->
+    <section id="algoritmo" class="section">
+      <header class="section__header">
+        <h2>Ajude o algoritmo a ser mais certeiro</h2>
+        <button class="section__toggle" aria-expanded="true" aria-controls="algoritmo-content">▾</button>
+      </header>
+
+      <div id="algoritmo-content" class="section__content">
+        <div class="two-col">
+          <div class="copy">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies tellus nec mi porta
+              convallis sollicitudin eu urna.
+            </p>
+            <p>
+              Morbi eu condimentum urna. Curabitur eu magna eget turpis condimentum ultrices. Suspendisse quis lorem
+              ultricies, pulvinar purus sed, egestas erat.
+            </p>
+          </div>
+
+          <form id="form-user" class="form" novalidate>
+            <label class="field">
+              <span>Seu nome</span>
+              <input name="name" type="text" placeholder="Seu nome" required />
+              <small class="error" aria-live="polite"></small>
+            </label>
+
+            <label class="field">
+              <span>E-mail</span>
+              <input name="email" type="email" placeholder="voce@exemplo.com" required />
+              <small class="error" aria-live="polite"></small>
+            </label>
+
+            <label class="field">
+              <span>CPF</span>
+              <input name="cpf" inputmode="numeric" pattern="\d{11}" maxlength="11" placeholder="Somente números" required />
+              <small class="hint">11 dígitos, somente números</small>
+              <small class="error" aria-live="polite"></small>
+            </label>
+
+            <fieldset class="field field--inline">
+              <legend>Gênero</legend>
+              <label><input type="radio" name="gender" value="M" required /> Masculino</label>
+              <label><input type="radio" name="gender" value="F" /> Feminino</label>
+              <small class="error" aria-live="polite"></small>
+            </fieldset>
+
+            <button class="btn btn--primary" type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Produtos -->
+    <section id="produtos" class="section">
+      <header class="section__header">
+        <h2>Sua seleção especial</h2>
+      </header>
+
+      <div id="product-list" class="grid" aria-live="polite" aria-busy="true"></div>
+      <div class="loadmore">
+        <button id="load-more" class="btn btn--ghost" type="button">Ainda mais produtos aqui!</button>
+      </div>
+    </section>
+
+    <!-- Newsletter / Compartilhe -->
+    <section id="newsletter" class="section">
+      <header class="section__header">
+        <h2>Compartilhe a novidade</h2>
+      </header>
+
+      <p class="section__lead">Quer que seus amigos também ganhem a lista personalizada deles? Preencha agora!</p>
+
+      <form id="form-newsletter" class="form form--compact" novalidate>
+        <label class="field">
+          <span>Nome do seu amigo</span>
+          <input name="friendName" type="text" required />
+          <small class="error" aria-live="polite"></small>
+        </label>
+        <label class="field">
+          <span>E-mail dele</span>
+          <input name="friendEmail" type="email" required />
+          <small class="error" aria-live="polite"></small>
+        </label>
+        <button class="btn btn--primary" type="submit">Enviar agora</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Testando suas habilidades em HTML, CSS e JS.<br>Linx Impulse<br>2019</p>
+    </div>
+    <div class="footer__skew" aria-hidden="true"></div>
+  </footer>
+
+  <template id="product-card-template">
+    <article class="card">
+      <a class="card__image" href="#">
+        <img loading="lazy" alt="" />
+      </a>
+      <div class="card__body">
+        <h3 class="card__title"></h3>
+        <p class="card__desc"></p>
+        <p class="card__price">
+          <span class="old"></span>
+          <strong class="now"></strong>
+          <span class="installments"></span>
+        </p>
+        <button class="btn btn--primary card__cta" type="button">Comprar</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
 
